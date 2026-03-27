@@ -5,18 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class FreelancerProfile extends Model
+class ClientProfile extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'user_id',
-        'title',
-        'bio',
-        'daily_rate',
-        'experience_years',
-        'portfolio_url',
-        'is_available'
+        'company_name',
+        'description'
     ];
 
     public function user()

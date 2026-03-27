@@ -16,7 +16,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
-    use HasApiTokens,HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = ['name', 'email', 'password', 'role'];
     protected $hidden = ['password', 'remember_token'];
@@ -32,5 +32,16 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+
+    public function freelancerProfile()
+    {
+        return $this->hasOne(FreelancerProfile::class);
+    }
+
+    public function clientProfile()
+    {
+        return $this->hasOne(ClientProfile::class);
     }
 }
