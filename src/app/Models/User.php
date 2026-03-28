@@ -44,4 +44,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(ClientProfile::class);
     }
+
+    public function missions()
+    {
+        return $this->hasMany(Mission::class, "client_id");
+    }
 }

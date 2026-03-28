@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ProfileController;
+use App\Http\Controllers\Api\MissionController;
 
 // profile routes
 Route::middleware("auth:sanctum")->group(function () {
@@ -25,4 +26,15 @@ Route::post("/login", [AuthController::class, "login"]);
 Route::middleware("auth:sanctum")->group(function () {
     Route::post("/logout", [AuthController::class, "logout"]);
     Route::get("/me", [AuthController::class, "me"]); // optional
+});
+
+
+// routes missions
+Route::get("/missions", [MissionController::class, "index"]);
+Route::get("/missions/{id}", [MissionController::class, "show"]);
+
+Route::middleware("auth:sanctum")->group(function () {
+    Route::post("/missions", [MissionController::class, "store"]);
+    Route::put("/missions/{id}", [MissionController::class, "update"]);
+    Route::delete("/missions/{id}", [MissionController::class, "destroy"]);
 });
